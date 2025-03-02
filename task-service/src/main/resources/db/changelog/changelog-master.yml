@@ -1,0 +1,9 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: smurfizkewl
+      changes:
+        - sqlFile:
+            path: file:///D:/Users/Jon/Downloads/IdeaProjects/taskflow-backend/task-service/src/main/resources/db/changelog/01-create-tasks-table.sql
+            relativeToChangelogFile: false
+            stripComments: false

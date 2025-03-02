@@ -3,6 +3,7 @@ package com.taskflow.taskservice.outbound.mapper;
 import com.taskflow.taskservice.core.model.TaskCore;
 import com.taskflow.taskservice.outbound.entity.TaskEntity;
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
 
 import java.util.List;

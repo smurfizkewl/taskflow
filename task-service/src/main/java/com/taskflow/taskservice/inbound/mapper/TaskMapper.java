@@ -14,6 +14,8 @@ public interface TaskMapper {
     TaskMapper INSTANCE = Mappers.getMapper(TaskMapper.class);
 
     TaskCore requestDtoToCore(TaskRequestDto requestDto);
+
     TaskResponseDto coreToResponseDto(TaskCore taskCore);
+
     List<TaskResponseDto> coreListToResponseDtoList(List<TaskCore> taskCoreList);
 }

@@ -22,10 +22,13 @@
         <mapstruct.version>1.6.3</mapstruct.version>
         <lombok.version>1.18.36</lombok.version>
         <lombok.mapstruct.version>0.2.0</lombok.mapstruct.version>
-        <junit.version>5.12.0</junit.version>
-        <!--<testcontainers.version>1.20.5</testcontainers.version>-->
+        <testcontainers.version>1.20.5</testcontainers.version>
         <wiremock.version>3.12.0</wiremock.version>
         <liquibase.version>4.29.0</liquibase.version>
+        <micrometer.version>1.14.4</micrometer.version>
+        <opentelemetry.sdk.version>1.47.0</opentelemetry.sdk.version>
+        <opentelemetry.kafka.version>2.13.1-alpha</opentelemetry.kafka.version>
+        <logstash.enconder.version>8.0</logstash.enconder.version>
     </properties>
 
     <dependencies>
@@ -100,21 +103,13 @@
             <version>${lombok.mapstruct.version}</version>
         </dependency>
 
-        <!-- JUnit for Unit Testing -->
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter</artifactId>
-            <version>${junit.version}</version>
-            <scope>test</scope>
-        </dependency>
-
         <!-- Testcontainers for Integration Testing -->
-        <!--<dependency>
+        <dependency>
             <groupId>org.testcontainers</groupId>
             <artifactId>junit-jupiter</artifactId>
             <version>${testcontainers.version}</version>
             <scope>test</scope>
-        </dependency>-->
+        </dependency>
 
         <!-- WireMock for Mocking External Services -->
         <dependency>
@@ -130,6 +125,32 @@
             <artifactId>liquibase-core</artifactId>
             <version>${liquibase.version}</version>
         </dependency>
+
+        <dependency>
+            <groupId>io.micrometer</groupId>
+            <artifactId>micrometer-registry-prometheus</artifactId>
+            <version>${micrometer.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.opentelemetry</groupId>
+            <artifactId>opentelemetry-sdk</artifactId>
+            <version>${opentelemetry.sdk.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.opentelemetry.instrumentation</groupId>
+            <artifactId>opentelemetry-kafka-clients-2.6</artifactId>
+            <version>${opentelemetry.kafka.version}</version>
+        </dependency>
+
+        <!-- Logstash Encoder -->
+        <dependency>
+            <groupId>net.logstash.logback</groupId>
+            <artifactId>logstash-logback-encoder</artifactId>
+            <version>${logstash.enconder.version}</version>
+        </dependency>
+
     </dependencies>
 
     <build>

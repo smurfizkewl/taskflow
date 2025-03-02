@@ -11,4 +11,54 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
   liquibase:
-    change-log: classpath:db/changelog/changelog-master.xml
+    change-log: classpath:db/changelog/changelog-master.yml
+  security:
+    user:
+      name: admin
+      password: admin
+      role: USER
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, prometheus
+  tracing:
+    sampling:
+      probability: 1.0
+  prometheus:
+    metrics:
+      export:
+        enabled: true
+
+kafka:
+  bootstrap-servers: localhost:9092
+  consumer:
+    group-id: task-service-group-id
+    auto-offset-reset: earliest
+
+opentelemetry:
+  tracing:
+    enabled: true
+    exporter:
+      jaeger:
+        endpoint: http://localhost:5775
+        service-name: task-service
+
+  metrics:
+    enabled: true
+    exporter:
+      prometheus:
+        endpoint: http://localhost:9090
+
+logging:
+  level:
+    root: info
+    com.taskflow.taskservice: debug
+  pattern:
+    console: "%d{dd-MM-yyyy HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+  file:
+    name: logs/application.log
+  driver: loki
+  options:
+    loki-url: "http://localhost:3100/loki/api/v1/push"
